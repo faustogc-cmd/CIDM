@@ -21,7 +21,7 @@ api_key_env = os.environ.get("GROQ_API_KEY")
 
 # RESPALDO DIRECTO: Si Render falla en leerla, ponemos tu clave aquí directamente.
 # REEMPLAZA el texto de abajo por tu clave real de Groq (la que empieza por gsk_...)
-CLAVE_RESPALDO = "AQUI_PEGA_TU_CLAVE_DE_GROQ_REAL"
+CLAVE_RESPALDO = "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"
 
 if api_key_env:
     token_final = api_key_env.strip()
