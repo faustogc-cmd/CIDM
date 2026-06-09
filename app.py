@@ -10,7 +10,7 @@ CORS(app)
 
 # La clave ahora se lee de las variables de entorno de Render de forma segura
 clave_api = os.environ.get("GEMINI_API_KEY")
-client = genai.Client(api_key=clave_api)
+client = genai.Client()
 
 # BASE DE CONOCIMIENTO INSTITUCIONAL (Reemplace con la información final que generó)
 CONTEXTO_INSTITUCIONAL = """
