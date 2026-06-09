@@ -80,6 +80,13 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 ## 8. RUTAS DE NAVEGACIÓN Y SOFIA PLUS
 * Menú Principal del Blog: Inicio; Nosotros: Quienes somos, directorio coorporativo, servicios formativos; Estudia en el SENA; Primeros pasos Sofia Plus, Oferta titulada presencial, Cursos Cortos Vigentes (https://cidmfloridablanca.blogspot.com/p/programas-cortos.html), Calendario SENA, Preguntas Frecuentes, ¿Quieres recibir información?; Aprendices: Bienestar al Aprendiz, Apoyos y estimulos, Apoyos de sostenimiento FIC, cancelación apoyos, póliza, Cronograma de actividades, Voceros y Representantes, Campesena; Trámites: Link de Radicación (https://oficinavirtualderadicacion.sena.edu.co/oficinavirtual/radicar.waformularioradicar.aspx), Paso a Paso de Radicación (https://drive.google.com/file/d/1NnQ9lDlAZU2SSFgQSElwRuZixl08JW6J/view), Certificación, Novedades Aprendices, Guia de actualización de datos Sofia Plus; Sectores Productivos; Autoevaluación; Egresados.
 * En SOFIA Plus: Descarga de certificados, actualización de datos, restablecimiento de contraseña, y juicios de evaluación.
+
+## 9. NOVEDADES APRENDICES Y NORMATIVA PARA EGRESADOS
+* Registro de Novedades: Espacio habilitado para registrar situaciones y cambios durante el proceso formativo, incluyendo aplazamientos, retiros voluntarios, traslados, entre otros.
+* Documentación Requerida para Novedades: 
+  - Instructivo de Novedades.
+  - Formato de Novedades.
+* Normativa para Egresados (Resolución 2198 de 2019): Los aprendices que ya cuentan con una certificación previa deben cumplir un período de espera mínimo de doce (12) meses, contados a partir de la obtención de su último certificado, para poder iniciar un nuevo programa perteneciente al mismo nivel de formación.
 """
 
 @app.route('/api/chat', methods=['POST'])
