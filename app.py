@@ -2,28 +2,22 @@ import os
 import time
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from google import genai
-from google.genai import types
+from groq import Groq
 
 app = Flask(__name__)
 CORS(app)
 
-# 1. LEER LA CLAVE DE FORMA DIRECTA Y PRECISA
-api_key_env = os.environ.get("GEMINI_API_KEY")
-
-# Nos aseguramos de limpiar posibles espacios o saltos de línea invisibles si existe la clave
-if api_key_env:
-    api_key_env = api_key_env.strip()
+# Leemos la nueva clave desde las variables de entorno de Render
+api_key_env = os.environ.get("GROQ_API_KEY")
 
 try:
-    # Inicialización estándar según la última documentación de google-genai
     if api_key_env:
-        client = genai.Client(api_key=api_key_env)
+        # Inicializamos el cliente de Groq para usar Llama 3
+        client = Groq(api_key=api_key_env)
     else:
         client = None
 except Exception as e:
     client = None
-    print(f"ERROR CRÍTICO AL INICIALIZAR EL CLIENTE DE GOOGLE: {str(e)}")
 
 # BASE DE CONOCIMIENTO INSTITUCIONAL
 CONTEXTO_INSTITUCIONAL = """
@@ -50,12 +44,11 @@ Tu objetivo es guiar a los usuarios respondiendo de manera clara y cortés basad
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    # Si la clave de API no se cargó correctamente en el panel de Render
     if not api_key_env:
-        return jsonify({'respuesta': 'Error técnico: La variable de entorno GEMINI_API_KEY no está configurada o está vacía en el panel de Render.'}), 500
+        return jsonify({'respuesta': 'Error: La variable GROQ_API_KEY no está configurada en Render.'}), 500
 
     if client is None:
-        return jsonify({'respuesta': 'Error técnico: No se pudo inicializar el cliente de Google GenAI. Verifica la validez de tu API Key.'}), 500
+        return jsonify({'respuesta': 'Error: No se pudo inicializar el cliente de Groq.'}), 500
 
     try:
         data = request.get_json()
@@ -64,31 +57,22 @@ def chat():
         if not mensaje_usuario:
             return jsonify({'respuesta': 'No se recibió ningún mensaje.'}), 400
 
-        max_reintentos = 3
+        # Llamada al modelo Llama 3 inyectando el rol del sistema y el mensaje del usuario
+        completion = client.chat.completions.create(
+            model="llama3-8b-8192",  # Modelo ultra rápido y eficiente de Meta
+            messages=[
+                {"role": "system", "content": CONTEXTO_INSTITUCIONAL},
+                {"role": "user", "content": mensaje_usuario}
+            ],
+            temperature=0.3,
+            max_tokens=500
+        )
         
-        for intento in range(max_reintentos):
-            try:
-                # Usamos el método de generación estándar de contenido
-                response = client.models.generate_content(
-                    model='gemini-2.5-flash',
-                    contents=mensaje_usuario,
-                    config=types.GenerateContentConfig(
-                        system_instruction=CONTEXTO_INSTITUCIONAL,
-                        temperature=0.3 
-                    )
-                )
-                return jsonify({'respuesta': response.text})
-            
-            except Exception as error_api:
-                if '503' in str(error_api) and intento < (max_reintentos - 1):
-                    time.sleep(2)
-                    continue
-                else:
-                    raise error_api
+        respuesta_ia = completion.choices[0].message.content
+        return jsonify({'respuesta': respuesta_ia})
 
     except Exception as e:
-        # Esto enviará el mensaje exacto del error de vuelta a Blogger para que lo leas en pantalla
-        return jsonify({'respuesta': f'Error en procesamiento interno: {str(e)}'}), 500
+        return jsonify({'respuesta': f'Error en procesamiento interno con Llama3: {str(e)}'}), 500
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
