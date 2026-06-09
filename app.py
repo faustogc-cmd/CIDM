@@ -83,9 +83,8 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    # Validación radical del Token
     if not TOKEN_FINAL or "AQUI_PEGA" in TOKEN_FINAL:
-        return jsonify({'respuesta': 'Error del sistema: Clave de API no detectada en el código backend.'}), 500
+        return jsonify({'respuesta': 'Error de configuración: No se ha ingresado una clave API válida en el servidor.'}), 500
 
     try:
         data = request.get_json()
@@ -94,7 +93,6 @@ def chat():
         if not mensaje_usuario:
             return jsonify({'respuesta': 'No se recibió ningún mensaje.'}), 400
 
-        # DIRECCIÓN DE CONEXIÓN DIRECTA (Ignora los proxies de Render)
         url_api = "https://api.groq.com/openai/v1/chat/completions"
         headers = {
             "Authorization": f"Bearer {TOKEN_FINAL}",
@@ -102,7 +100,8 @@ def chat():
         }
         
         payload = {
-            "model": "llama3-8b-8192",
+            # MODIFICACIÓN CLAVE: Actualización al modelo estable Llama 3.3 de 70 Millones de parámetros
+            "model": "llama-3.3-70b-versatile",
             "messages": [
                 {"role": "system", "content": CONTEXTO_INSTITUCIONAL},
                 {"role": "user", "content": mensaje_usuario}
@@ -111,7 +110,6 @@ def chat():
             "max_tokens": 650
         }
 
-        # Realizamos la petición HTTP ignorando completamente los proxies internos del entorno
         response = requests.post(url_api, json=payload, headers=headers, proxies={"http": None, "https": None}, timeout=30)
         
         if response.status_code == 200:
