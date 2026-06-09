@@ -1,39 +1,20 @@
 import os
 import time
+import requests
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from groq import Groq
 
 app = Flask(__name__)
 CORS(app)
 
-# Parche de compatibilidad de red para Render
-os.environ.pop('HTTP_PROXY', None)
-os.environ.pop('HTTPS_PROXY', None)
-os.environ.pop('http_proxy', None)
-os.environ.pop('https_proxy', None)
-
 # =====================================================================
-# CONFIGURACIÓN SEGURA DE LA CLAVE API
+# CONFIGURACIÓN DE CREDENCIALES (PROTOCOLO WEB DIRECTO)
 # =====================================================================
-# Intentamos leer la variable desde el panel de Render
 api_key_env = os.environ.get("GROQ_API_KEY")
+CLAVE_RESPALDO = "AQUI_PEGA_TU_CLAVE_DE_GROQ_REAL"
 
-# RESPALDO DIRECTO: Si Render falla en leerla, ponemos tu clave aquí directamente.
-# REEMPLAZA el texto de abajo por tu clave real de Groq (la que empieza por gsk_...)
-CLAVE_RESPALDO = "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"
-
-if api_key_env:
-    token_final = api_key_env.strip()
-else:
-    token_final = CLAVE_RESPALDO.strip()
-
-# Inicialización forzada con el token final
-try:
-    client = Groq(api_key=token_final)
-except Exception as e:
-    client = None
-    print(f"--> ERROR CRÍTICO EN GROQ: {str(e)}")
+# Seleccionamos la clave disponible de forma limpia
+TOKEN_FINAL = api_key_env.strip() if api_key_env else CLAVE_RESPALDO.strip()
 
 # =====================================================================
 # BASE DE CONOCIMIENTO INSTITUCIONAL COMPLETA (CIDM)
@@ -102,11 +83,9 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    # Verificación final infalible
-    if client is None:
-        return jsonify({
-            'respuesta': 'Error del sistema: No se pudo instanciar el cliente de Groq. Revisa la sintaxis del token.'
-        }), 500
+    # Validación radical del Token
+    if not TOKEN_FINAL or "AQUI_PEGA" in TOKEN_FINAL:
+        return jsonify({'respuesta': 'Error del sistema: Clave de API no detectada en el código backend.'}), 500
 
     try:
         data = request.get_json()
@@ -115,22 +94,35 @@ def chat():
         if not mensaje_usuario:
             return jsonify({'respuesta': 'No se recibió ningún mensaje.'}), 400
 
-        # Llamada al modelo Llama 3
-        completion = client.chat.completions.create(
-            model="llama3-8b-8192",
-            messages=[
+        # DIRECCIÓN DE CONEXIÓN DIRECTA (Ignora los proxies de Render)
+        url_api = "https://api.groq.com/openai/v1/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {TOKEN_FINAL}",
+            "Content-Type": "application/json"
+        }
+        
+        payload = {
+            "model": "llama3-8b-8192",
+            "messages": [
                 {"role": "system", "content": CONTEXTO_INSTITUCIONAL},
                 {"role": "user", "content": mensaje_usuario}
             ],
-            temperature=0.3,
-            max_tokens=650
-        )
+            "temperature": 0.3,
+            "max_tokens": 650
+        }
+
+        # Realizamos la petición HTTP ignorando completamente los proxies internos del entorno
+        response = requests.post(url_api, json=payload, headers=headers, proxies={"http": None, "https": None}, timeout=30)
         
-        respuesta_ia = completion.choices[0].message.content
-        return jsonify({'respuesta': respuesta_ia})
+        if response.status_code == 200:
+            resultado_json = response.json()
+            respuesta_ia = resultado_json['choices'][0]['message']['content']
+            return jsonify({'respuesta': respuesta_ia})
+        else:
+            return jsonify({'respuesta': f'Fallo en pasarela Groq (Código {response.status_code}): {response.text}'}), 500
 
     except Exception as e:
-        return jsonify({'respuesta': f'Error en consulta con Llama3: {str(e)}'}), 500
+        return jsonify({'respuesta': f'Excepción atrapada en backend: {str(e)}'}), 500
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
