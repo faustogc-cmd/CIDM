@@ -11,7 +11,7 @@ CORS(app)
 # CONFIGURACIÓN DE CREDENCIALES (PROTOCOLO WEB DIRECTO)
 # =====================================================================
 api_key_env = os.environ.get("GROQ_API_KEY")
-CLAVE_RESPALDO = "AQUI_PEGA_TU_CLAVE_DE_GROQ_REAL"
+CLAVE_RESPALDO = "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"
 
 # Seleccionamos la clave disponible de forma limpia
 TOKEN_FINAL = api_key_env.strip() if api_key_env else CLAVE_RESPALDO.strip()
