@@ -48,13 +48,13 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
   - Noche: Lunes a Viernes de 6:00 p.m. a 9:45 p.m. y Sábados.
 
 ## 3. ADMISIONES Y MATRÍCULAS
-* Costos: Todos los servicios y programas son 100% gratuitos y sin intermediarios.
+* Costos: Sin costo, todos los servicios y programas son 100% gratuitos y sin intermediarios.
 * Simultaneidad: No se pueden cursar dos programas de formación titulada al mismo tiempo. Sí se permiten programas complementarios simultáneos.
 * Requisitos de Escolaridad por Nivel:
   - Operario: 5to de primaria aprobado.
   - Técnico: 9no grado aprobado.
   - Tecnólogo: Bachiller (grado 11°) y Pruebas Saber 11 (ICFES).
-* Documentación Requerida: Copia legible del documento de identidad (ambas caras), Certificado de EPS activo (SISBEN no es válido), Formato de Compromiso del Aprendiz firmado, y Formato de Tratamiento de datos para menores.
+* Documentación Requerida: Copia legible del documento de identidad (ambas caras), Certificado de EPS activo, Formato de Compromiso del Aprendiz firmado, y Formato de Tratamiento de datos para menores.
 
 ## 4. PROCESO DE CERTIFICACIÓN PARA APRENDICES
 * Descripción: Verificación de requisitos académicos y administrativos para generar el título (tarda aprox. 15 días hábiles tras validaciones).
@@ -75,9 +75,10 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 ## 7. BIENESTAR AL APRENDIZ
 * Ubicación: Primer piso del bloque administrativo (Liderado por Olga Teresa Rojas Cadena).
 * Servicios: Salud Integral (atención psicológica), Equidad (apoyos de sostenimiento, transporte, alimentación, monitorías), Cultura (danza, música, teatro), Deporte (torneos, acondicionamiento), Liderazgo (voceros), y Prevención de Deserción.
+* Apoyos Socioeconómicos: Los aprendices en formación pueden acceder a apoyos económicos presentandose en convocatoria y cumpliendo los requisitos de estrato y buen desempeño escolar.
 
 ## 8. RUTAS DE NAVEGACIÓN Y SOFIA PLUS
-* Menú Principal del Blog: Inicio, Nosotros, Servicios, Directorio Corporativo, Preguntas Frecuentes, Ofertas.
+* Menú Principal del Blog: Inicio; Nosotros: Quienes somos, directorio coorporativo, servicios formativos; Estudia en el SENA; Primeros pasos Sofia Plus, Oferta titulada presencial, Cursos Cortos Vigentes (https://cidmfloridablanca.blogspot.com/p/programas-cortos.html), Calendario SENA, Preguntas Frecuentes, ¿Quieres recibir información?; Aprendices: Bienestar al Aprendiz, Apoyos y estimulos, Apoyos de sostenimiento FIC, cancelación apoyos, póliza, Cronograma de actividades, Voceros y Representantes, Campesena; Trámites: Link de Radicación (https://oficinavirtualderadicacion.sena.edu.co/oficinavirtual/radicar.waformularioradicar.aspx), Paso a Paso de Radicación (https://drive.google.com/file/d/1NnQ9lDlAZU2SSFgQSElwRuZixl08JW6J/view), Certificación, Novedades Aprendices, Guia de actualización de datos Sofia Plus; Sectores Productivos; Autoevaluación; Egresados.
 * En SOFIA Plus: Descarga de certificados, actualización de datos, restablecimiento de contraseña, y juicios de evaluación.
 """
 
