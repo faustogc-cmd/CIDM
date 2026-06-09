@@ -7,36 +7,40 @@ from groq import Groq
 app = Flask(__name__)
 CORS(app)
 
-# =====================================================================
-# PARCHE DE COMPATIBILIDAD PARA RENDER
-# Eliminamos las variables de proxy que confunden a la librería de Groq
-# =====================================================================
+# Parche de compatibilidad de red para Render
 os.environ.pop('HTTP_PROXY', None)
 os.environ.pop('HTTPS_PROXY', None)
 os.environ.pop('http_proxy', None)
 os.environ.pop('https_proxy', None)
 
-# Leer la clave de entorno limpia de Render
+# =====================================================================
+# CONFIGURACIÓN SEGURA DE LA CLAVE API
+# =====================================================================
+# Intentamos leer la variable desde el panel de Render
 api_key_env = os.environ.get("GROQ_API_KEY")
-if api_key_env:
-    api_key_env = api_key_env.strip()
 
-# Inicialización segura del cliente
+# RESPALDO DIRECTO: Si Render falla en leerla, ponemos tu clave aquí directamente.
+# REEMPLAZA el texto de abajo por tu clave real de Groq (la que empieza por gsk_...)
+CLAVE_RESPALDO = "AQUI_PEGA_TU_CLAVE_DE_GROQ_REAL"
+
+if api_key_env:
+    token_final = api_key_env.strip()
+else:
+    token_final = CLAVE_RESPALDO.strip()
+
+# Inicialización forzada con el token final
 try:
-    if api_key_env:
-        client = Groq(api_key=api_key_env)
-    else:
-        client = Groq()
+    client = Groq(api_key=token_final)
 except Exception as e:
     client = None
-    print(f"--> ERROR CRÍTICO EN GROQ: No se pudo crear el cliente. Motivo: {str(e)}")
+    print(f"--> ERROR CRÍTICO EN GROQ: {str(e)}")
 
 # =====================================================================
 # BASE DE CONOCIMIENTO INSTITUCIONAL COMPLETA (CIDM)
 # =====================================================================
 CONTEXTO_INSTITUCIONAL = """
 Eres el asistente virtual oficial del Centro Industrial del Diseño y la Manufactura (CIDM) - SENA Regional Santander.
-Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera clara, cortés, empática y basada estrictamente en la información provista a continuación. Puedes usar etiquetas HTML básicas como enlaces (<a href='...' target='_blank'>Texto</a>) o negritas (<b>texto</b>) para estructurar tus respuestas y hacerlas legibles. Si te preguntan algo que no está aquí, indica amablemente que no dispones de ese dato exacto y sugiéreles contactar a Atención al Ciudadano o revisar el directorio corporativo.
+Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera clara, cortés, empática y basada estrictamente en la información provista a continuación. Puedes usar HTML básico como <a href='...' target='_blank'>Texto</a> o <b>texto</b>.
 
 ## 1. DIRECTORIO CORPORATIVO
 * Sede Principal: Kilómetro 6 Autopista A Floridablanca 50-33.
@@ -77,7 +81,7 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 * Paso 2 - Etapa Práctica: Registro y aprobación de alternativa (Contrato de Aprendizaje, Proyecto Productivo, Vinculación Laboral, Pasantía).
 * Paso 3 - Seguimiento: Entrega de bitácoras e informes al instructor.
 * Paso 4 - Documentación: Copia de documento de identidad, Certificado de la APE, Formato F023, Certificación de alternativa práctica, Formulario de actualización de datos. Tecnólogos requieren Certificado de Pruebas Saber TyT (habilitadas tras aprobar >75% del programa).
-* Paso 5 - Plazos y Normativa (Acuerdo 0009 de 2024 que deroga el Acuerdo 007 de 2012): Finalizada la etapa lectiva, hay un plazo máximo estricto para desarrollar y presentar evidencias de etapa productiva. El incumplimiento injustificado configura causal de deserción y se reporta al comité.
+* Paso 5 - Plazos y Normativa (Acuerdo 0009 de 2024 que deroga el Acuerdo 007 de 2012): Finalizada la etapa lectiva, hay un plazo máximo estricto para desarrollar y presentar evidencias de etapa productiva. El incumplimiento unjustificado configura causal de deserción y se reporta al comité.
 * Paso 6 - Paz y Salvo: Sin obligaciones pendientes con Biblioteca, Bienestar, Almacén, etc.
 
 ## 5. CERTIFICACIÓN DE COMPETENCIAS LABORALES
@@ -98,9 +102,10 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
+    # Verificación final infalible
     if client is None:
         return jsonify({
-            'respuesta': 'Error de inicialización: El cliente de Groq no se pudo crear debido al conflicto de red de Render.'
+            'respuesta': 'Error del sistema: No se pudo instanciar el cliente de Groq. Revisa la sintaxis del token.'
         }), 500
 
     try:
@@ -110,7 +115,7 @@ def chat():
         if not mensaje_usuario:
             return jsonify({'respuesta': 'No se recibió ningún mensaje.'}), 400
 
-        # Petición al modelo Llama 3 con el nuevo contexto expandido
+        # Llamada al modelo Llama 3
         completion = client.chat.completions.create(
             model="llama3-8b-8192",
             messages=[
@@ -118,14 +123,14 @@ def chat():
                 {"role": "user", "content": mensaje_usuario}
             ],
             temperature=0.3,
-            max_tokens=650  # Ampliado ligeramente para permitir respuestas detalladas
+            max_tokens=650
         )
         
         respuesta_ia = completion.choices[0].message.content
         return jsonify({'respuesta': respuesta_ia})
 
     except Exception as e:
-        return jsonify({'respuesta': f'Error al solicitar respuesta a Llama3: {str(e)}'}), 500
+        return jsonify({'respuesta': f'Error en consulta con Llama3: {str(e)}'}), 500
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
