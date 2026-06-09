@@ -8,14 +8,23 @@ from google.genai import types
 app = Flask(__name__)
 CORS(app)
 
-# La clave ahora se lee de las variables de entorno de Render de forma segura
-clave_api = os.environ.get("GEMINI_API_KEY")
-client = genai.Client()
+# Intentamos leer la API Key desde el entorno del servidor
+api_key_env = os.environ.get("GEMINI_API_KEY")
 
-# BASE DE CONOCIMIENTO INSTITUCIONAL (Reemplace con la información final que generó)
+# Verificación de seguridad en la inicialización del cliente
+try:
+    if api_key_env:
+        client = genai.Client(api_key=api_key_env)
+    else:
+        # Si no encuentra la variable en Render, busca una configuración local por defecto
+        client = genai.Client()
+except Exception as e:
+    client = None
+
+# BASE DE CONOCIMIENTO INSTITUCIONAL
 CONTEXTO_INSTITUCIONAL = """
 Eres el asistente virtual oficial del Centro Industrial del Diseño y la Manufactura (CIDM).
-Tu objetivo es guiar a los usuarios (aspirantes, aprendices y egresados) respondiendo de manera clara, cortés y basada estrictamente en la información provista a continuación. Si te preguntan algo que no está en este documento, sugiere escribir al correo de soporte oficial.
+Tu objetivo es guiar a los usuarios respondiendo de manera clara y cortés basada estrictamente en la información provista.
 
 --- 1. IDENTIDAD INSTITUCIONAL ---
 * Nombre oficial: Centro Industrial del Diseño y la Manufactura.
@@ -37,6 +46,10 @@ Tu objetivo es guiar a los usuarios (aspirantes, aprendices y egresados) respond
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
+    # Verificamos si el cliente de IA se inicializó correctamente
+    if client is None:
+        return jsonify({'respuesta': 'Error de configuración: La clave de API no está disponible en el servidor.'}), 500
+
     try:
         data = request.get_json()
         mensaje_usuario = data.get('mensaje', '')
@@ -48,6 +61,7 @@ def chat():
         
         for intento in range(max_reintentos):
             try:
+                # Forzamos el uso del modelo estable de producción gemini-2.5-flash
                 response = client.models.generate_content(
                     model='gemini-2.5-flash',
                     contents=mensaje_usuario,
@@ -66,7 +80,8 @@ def chat():
                     raise error_api
 
     except Exception as e:
-        return jsonify({'respuesta': 'En este momento nuestros servidores están experimentando una alta demanda. Por favor, intenta tu consulta nuevamente en unos minutos.'}), 500
+        # Añadimos el error técnico detallado al mensaje para saber exactamente qué falla
+        return jsonify({'respuesta': f'Error en el procesamiento de la IA. Detalle técnico: {str(e)}'}), 500
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
