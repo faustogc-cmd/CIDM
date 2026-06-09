@@ -8,18 +8,22 @@ from google.genai import types
 app = Flask(__name__)
 CORS(app)
 
-# Intentamos leer la API Key desde el entorno del servidor
+# 1. LEER LA CLAVE DE FORMA DIRECTA Y PRECISA
 api_key_env = os.environ.get("GEMINI_API_KEY")
 
-# Verificación de seguridad en la inicialización del cliente
+# Nos aseguramos de limpiar posibles espacios o saltos de línea invisibles si existe la clave
+if api_key_env:
+    api_key_env = api_key_env.strip()
+
 try:
+    # Inicialización estándar según la última documentación de google-genai
     if api_key_env:
         client = genai.Client(api_key=api_key_env)
     else:
-        # Si no encuentra la variable en Render, busca una configuración local por defecto
-        client = genai.Client()
+        client = None
 except Exception as e:
     client = None
+    print(f"ERROR CRÍTICO AL INICIALIZAR EL CLIENTE DE GOOGLE: {str(e)}")
 
 # BASE DE CONOCIMIENTO INSTITUCIONAL
 CONTEXTO_INSTITUCIONAL = """
@@ -46,9 +50,12 @@ Tu objetivo es guiar a los usuarios respondiendo de manera clara y cortés basad
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    # Verificamos si el cliente de IA se inicializó correctamente
+    # Si la clave de API no se cargó correctamente en el panel de Render
+    if not api_key_env:
+        return jsonify({'respuesta': 'Error técnico: La variable de entorno GEMINI_API_KEY no está configurada o está vacía en el panel de Render.'}), 500
+
     if client is None:
-        return jsonify({'respuesta': 'Error de configuración: La clave de API no está disponible en el servidor.'}), 500
+        return jsonify({'respuesta': 'Error técnico: No se pudo inicializar el cliente de Google GenAI. Verifica la validez de tu API Key.'}), 500
 
     try:
         data = request.get_json()
@@ -61,7 +68,7 @@ def chat():
         
         for intento in range(max_reintentos):
             try:
-                # Forzamos el uso del modelo estable de producción gemini-2.5-flash
+                # Usamos el método de generación estándar de contenido
                 response = client.models.generate_content(
                     model='gemini-2.5-flash',
                     contents=mensaje_usuario,
@@ -80,8 +87,8 @@ def chat():
                     raise error_api
 
     except Exception as e:
-        # Añadimos el error técnico detallado al mensaje para saber exactamente qué falla
-        return jsonify({'respuesta': f'Error en el procesamiento de la IA. Detalle técnico: {str(e)}'}), 500
+        # Esto enviará el mensaje exacto del error de vuelta a Blogger para que lo leas en pantalla
+        return jsonify({'respuesta': f'Error en procesamiento interno: {str(e)}'}), 500
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
