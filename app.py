@@ -39,6 +39,8 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 * Sistemas - Recursos Tecnológicos: Lubing Oswaldo Contreras Sandoval (locontreras@sena.edu.co).
 * Infraestructura: Elmer Alfredo Mejia Viviescas (eamejia@sena.edu.co).
 * Atención al Ciudadano Institucional: servicioalciudadano@sena.edu.co
+* Matriculas: Jose Gabriel Villarreal Arciniegas (jgvillareal@sena.edu.co)
+* Actualización de Datos: David Santiago Ramirez Ibañez (dramirezi@sena.edu.co)
 
 ## 2. HORARIOS Y JORNADAS
 * Horario de Atención Administrativa: Lunes a viernes de 7:30 a.m. a 12:00 p.m. y de 2:00 p.m. a 6:00 p.m.
@@ -48,6 +50,7 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
   - Noche: Lunes a Viernes de 6:00 p.m. a 9:45 p.m. y Sábados.
 
 ## 3. ADMISIONES Y MATRÍCULAS
+* Requisitos Cursos complementarios o cortos: Estar registrado en sofia plus, documento de indentidad vigente y valido en Colombia, mínima edad 14 años. 
 * Costos: Sin costo, todos los servicios y programas son 100% gratuitos y sin intermediarios.
 * Simultaneidad: No se pueden cursar dos programas de formación titulada al mismo tiempo. Sí se permiten programas complementarios simultáneos.
 * Requisitos de Escolaridad por Nivel:
@@ -69,7 +72,7 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 * Objetivo: Certificar conocimientos técnicos/empíricos gratis según Normas de Competencia. Estrategia actual: “Reconstruyendo Futuro 2026” (para víctimas del conflicto) y certificación interna de instructores.
 
 ## 6. SERVICIOS Y OFERTA EDUCATIVA
-* Modalidades: Titulada, Complementaria (presencial/virtual/mixta), Contrato de Aprendizaje, Certificación de Competencias, Articulación con la Media.
+* Modalidades: Titulada (presencial/virtual/mixta)(Operario, Técnico y Tecnólogo), Complementaria (presencial/virtual/mixta), Certificación de Competencias, Articulación con la Media (técnico).
 * Áreas de Formación: Cuero, Calzado y Marroquinería; Textil, Confección, Diseño y Moda; Informática, Diseño y Desarrollo de Software; Cultura y Artes Gráficas; Gestión Administrativa y Financiera; Construcción; Materiales e Industrias.
 
 ## 7. BIENESTAR AL APRENDIZ
@@ -80,6 +83,9 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 ## 8. RUTAS DE NAVEGACIÓN Y SOFIA PLUS
 * Menú Principal del Blog: Inicio; Nosotros: Quienes somos, directorio coorporativo, servicios formativos; Estudia en el SENA; Primeros pasos Sofia Plus, Oferta titulada presencial, Cursos Cortos Vigentes (https://cidmfloridablanca.blogspot.com/p/programas-cortos.html), Calendario SENA, Preguntas Frecuentes, ¿Quieres recibir información?; Aprendices: Bienestar al Aprendiz, Apoyos y estimulos, Apoyos de sostenimiento FIC, cancelación apoyos, póliza, Cronograma de actividades, Voceros y Representantes, Campesena; Trámites: Link de Radicación (https://oficinavirtualderadicacion.sena.edu.co/oficinavirtual/radicar.waformularioradicar.aspx), Paso a Paso de Radicación (https://drive.google.com/file/d/1NnQ9lDlAZU2SSFgQSElwRuZixl08JW6J/view), Certificación, Novedades Aprendices, Guia de actualización de datos Sofia Plus; Sectores Productivos; Autoevaluación; Egresados.
 * En SOFIA Plus: Descarga de certificados, actualización de datos, restablecimiento de contraseña, y juicios de evaluación.
+* Inscripciones a formación: A traves de www.betowa.sena.edu.co.
+* Cunsulta de ofertas presenciales del CIDM: https://cidmfloridablanca.blogspot.com/p/primera-oferta-de-formacion-presencial.html
+* Consulta de oferta complementaria CIDM: https://cidmfloridablanca.blogspot.com/p/programas-cortos.html
 
 ## 9. NOVEDADES APRENDICES Y NORMATIVA PARA EGRESADOS
 * Registro de Novedades: Espacio habilitado para registrar situaciones y cambios durante el proceso formativo, incluyendo aplazamientos, retiros voluntarios, traslados, entre otros.
