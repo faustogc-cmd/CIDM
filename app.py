@@ -50,14 +50,49 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
   - Noche: Lunes a Viernes de 6:00 p.m. a 9:45 p.m. y Sábados.
 
 ## 3. ADMISIONES Y MATRÍCULAS
-* Requisitos Cursos complementarios o cortos: Estar registrado en sofia plus, documento de indentidad vigente y valido en Colombia, mínima edad 14 años. 
-* Costos: Sin costo, todos los servicios y programas son 100% gratuitos y sin intermediarios.
-* Simultaneidad: No se pueden cursar dos programas de formación titulada al mismo tiempo. Sí se permiten programas complementarios simultáneos.
-* Requisitos de Escolaridad por Nivel:
-  - Operario: 5to de primaria aprobado.
-  - Técnico: 9no grado aprobado.
-  - Tecnólogo: Bachiller (grado 11°) y Pruebas Saber 11 (ICFES).
-* Documentación Requerida: Copia legible del documento de identidad (ambas caras), Certificado de EPS activo, Formato de Compromiso del Aprendiz firmado, y Formato de Tratamiento de datos para menores.
+
+*   **Gratuidad y Transparencia:** Todos los servicios, cursos y programas de formación profesional integral que ofrece la entidad son 100% gratuitos, se realizan de forma objetiva, con equidad, claridad y transparencia, y NO requieren de intermediarios para realizar el registro o la inscripción.
+
+*   **Requisitos Cursos Complementarios o Cortos:** 
+    - Realizar el registro de datos básicos e inscripción directamente en el aplicativo de gestión académico-administrativo (SOFIA Plus).
+    - Contar con documento de identidad vigente y válido en Colombia.
+    - Cumplir con la edad mínima de 14 años.
+    - Adjuntar fotocopia legible del documento de identificación para la verificación de los datos básicos y cumplir con los demás requisitos específicos establecidos en el diseño del curso.
+    - La selección de los aspirantes en formación complementaria se realiza estrictamente de acuerdo con el orden de inscripción.
+
+*   **Simultaneidad y Restricciones de Inscripción:**
+    - **Formación Titulada (Laboral y Tecnológica):** Un aspirante NO podrá inscribirse si ya se encuentra previamente inscrito en otro programa de formación profesional, si ha sido citado a pruebas de selección, si ya fue seleccionado, si está convocado a matrícula, si se encuentra matriculado en formación, o en estado "pendiente por certificar".
+    - **Formación Complementaria:** Se permite que el aspirante acceda y se matricule en hasta DOS (2) cursos especiales presenciales simultáneamente, siempre que le aporten a mejorar el desempeño de su oficio.
+    - **Sanciones:** Si el aprendiz no termina los cursos complementarios simultáneos en los que está matriculado, quedará sancionado por tres (3) meses. El tiempo de sanción reglamentaria cuenta formalmente a partir de la fecha de activación de la novedad en el aplicativo y el sistema la validará con la fecha de la nueva inscripción (no con la fecha de inicio de la formación).
+
+*   **Requisitos de Escolaridad por Nivel:**
+    - **Operario:** 5to de primaria aprobado.
+    - **Técnico:** 9no grado aprobado. *(Nota: Para Articulación con la Media - Doble Titulación, la Institución Educativa debe radicar un comunicado firmado por el rector certificando la aprobación del grado 9° para solicitar la matrícula en grado 10°)*.
+    - **Tecnólogo:** Título de Bachiller o Acta de Grado y resultado del Examen de Estado de la Educación Media ICFES SABER 11. 
+      *Excepción de entrega:* Si el aspirante presentó la prueba Saber 11 pero el resultado no le ha sido entregado oportunamente, el responsable de ingreso exigirá copia de la citación y se firmará una nota al respaldo del formato de compromiso donde el aprendiz se obliga a entregar el resultado dentro de los tres (3) meses siguientes al asentamiento de la matrícula; no hacerlo acarreará su retiro automático.
+    - **Especialización Tecnológica:** Título de Tecnólogo o Universitario en programas de formación de la correspondiente ocupación o en ocupaciones afines.
+
+*   **Documentación Requerida para Formalizar Matrícula:**
+    - **Documento de Identidad Original y Vigente (para verificación):** Tarjeta de identidad para menores de edad (desde los 7 años); Cédula de ciudadanía para mayores de 18 años. Se aceptan los tres tipos de contraseña expedidos por la Registraduría Nacional del Estado Civil (formato blanco preimpreso, formato verde o trámite por internet con código QR) sólo mientras el documento original se encuentre en proceso de producción.
+    - **Certificado Académico:** Diploma de Bachiller, Acta de Grado o el certificado correspondiente según el nivel. Los títulos, certificados o diplomas obtenidos en otros países deben estar debidamente apostillados y convalidados ante el Ministerio de Educación Nacional.
+    - **Certificado de Salud:** Certificación de afiliación activa al Sistema General de Seguridad Social en Salud (SGSSS).
+    - **Fotografía:** Una (1) fotografía a color con fondo blanco (únicamente), tamaño 3x4 cm, para la expedición del carné institucional.
+    - **Formato de Compromiso del Aprendiz:** Formato oficial (GFPI-F-015) debidamente firmado por el aspirante. Si no se acepta o no se entrega firmado, NO procede la matrícula y se registra la novedad de anulación en el sistema.
+    - **Formato de Tratamiento de Datos para Menores:** Si el aspirante es menor de edad, el tratamiento de datos personales debe ser autorizado expresamente por el padre, la madre, tutor o representante legal mediante la firma del formato oficial (GFPI-F-129), adjuntando el documento que acredite dicho parentesco o representación legal.
+
+*   **Lineamientos para Ciudadanos Extranjeros:**
+    - Deben contar con su estatus migratorio debidamente definido por la Unidad Administrativa Especial Migración Colombia.
+    - Para formaciones tituladas y complementarias se exige Cédula de Extranjería (con categoría de Residente o Migrante), cuya vigencia debe cubrir la totalidad del tiempo de la formación, la etapa productiva y el tiempo reglamentario posterior para la entrega de evidencias y certificación.
+    - Para ciudadanos venezolanos, se admite el Permiso por Protección Temporal (PPT) o el Permiso Especial de Permanencia (PEP, mientras permanezca vigente). Para formación complementaria, los extranjeros venezolanos también pueden identificarse con PPT, PEP o Cédula de Extranjería con estatus de residente, migrante, turista o visitante.
+    - Todos los documentos de identificación y permanencia legal deben estar estrictamente vigentes al momento de la matrícula, durante la formación y al certificarse.
+    - Todo extranjero matriculado en formación laboral, tecnológica o complementaria, o que reciba algún pago, ayuda económica o subsidio, debe ser reportado obligatoriamente ante la plataforma SIRE de Migración Colombia dentro de los 30 días calendario siguientes a su matrícula y dentro de los 30 días siguientes a la terminación de sus estudios.
+
+*   **Matrícula en Modalidad Virtual (Cargue de Archivos):**
+    - Los aspirantes seleccionados en la modalidad virtual deben realizar de forma autónoma el cargue digital de la totalidad de los documentos requeridos (Documento legible, Acta/Diploma convalidado si aplica, afiliación a SGSSS, ICFES y Compromiso del Aprendiz firmado) en el aplicativo SOFIA Plus.
+    - Los documentos se reciben única y exclusivamente dentro de las fechas estipuladas en el calendario oficial de la convocatoria; archivos enviados de manera extemporánea no serán tenidos en cuenta.
+
+*   **Disposición General Absoluta:**
+    - Bajo ninguna circunstancia se permiten usuarios en condición de "asistentes" dentro de los ambientes de aprendizaje en los centros de formación. Todo alumno debe estar formalmente matriculado en el sistema académico-administrativo.
 
 ## 4. PROCESO DE CERTIFICACIÓN PARA APRENDICES
 * Descripción: Verificación de requisitos académicos y administrativos para generar el título (tarda aprox. 15 días hábiles tras validaciones).
