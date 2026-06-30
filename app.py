@@ -132,7 +132,7 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
-    if not TOKEN_FINAL or "AQUI_PEGA" in TOKEN_FINAL:
+    if not TOKEN_FINAL:
         return jsonify({'respuesta': 'Error de configuración: No se ha ingresado una clave API válida en el servidor.'}), 500
 
     try:
@@ -149,7 +149,7 @@ def chat():
         }
         
         payload = {
-            # MODIFICACIÓN CLAVE: Actualización al modelo estable Llama 3.3 de 70 Millones de parámetros
+            # MODIFICACIÓN APLICADA: Actualización al nuevo modelo solicitado de OpenAI en Groq
             "model": "openai/gpt-oss-120b",
             "messages": [
                 {"role": "system", "content": CONTEXTO_INSTITUCIONAL},
