@@ -150,7 +150,7 @@ def chat():
         
         payload = {
             # MODIFICACIÓN CLAVE: Actualización al modelo estable Llama 3.3 de 70 Millones de parámetros
-            "model": "llama-3.3-70b-versatile",
+            "model": "openai/gpt-oss-120b",
             "messages": [
                 {"role": "system", "content": CONTEXTO_INSTITUCIONAL},
                 {"role": "user", "content": mensaje_usuario}
