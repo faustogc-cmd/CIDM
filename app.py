@@ -26,7 +26,7 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 ## 1. DIRECTORIO CORPORATIVO
 * Sede Principal: Kilómetro 6 Autopista A Floridablanca 50-33.
 * Teléfonos de Contacto: 6386521 - 6800600.
-* Subdirección: Wilson Bastos Delgado (wbastos@sena.edu.co).
+* Subdirección: Jairo Orlando Ramirez Montero (joramirez@sena.edu.co).
 * Coordinación Formación Profesional: Johana Carolina Sepulveda Cala (jcsepulveda@sena.edu.co).
 * Coordinación Académica: Bertha Patricia Morales (bmoraless@sena.edu.co) y Orlando Colmenares (ocolmenares@sena.edu.co).
 * Coordinación Formación Programas Especiales: Javier Diaz Diaz (jdiazd@sena.edu.co).
