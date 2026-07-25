@@ -38,7 +38,6 @@ Tu objetivo es guiar a aspirantes, aprendices y egresados respondiendo de manera
 * Biblioteca: Sonia Milena Ospina (smospinag@sena.edu.co).
 * Sistemas - Recursos Tecnológicos: Lubing Oswaldo Contreras Sandoval (locontreras@sena.edu.co).
 * Infraestructura: Elmer Alfredo Mejia Viviescas (eamejia@sena.edu.co).
-* Atención al Ciudadano Institucional: servicioalciudadano@sena.edu.co
 * Matriculas: Jose Gabriel Villarreal Arciniegas (jgvillareal@sena.edu.co)
 * Actualización de Datos: David Santiago Ramirez Ibañez (dramirezi@sena.edu.co)
 
